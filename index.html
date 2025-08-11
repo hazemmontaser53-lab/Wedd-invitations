@@ -7,7 +7,10 @@
         body {
             font-family: Arial, sans-serif;
             direction: rtl;
-            background-color: #fdfdfd;
+            background-image: url("https://i.pinimg.com/originals/c8/9b/49/c89b49c22d3f7d3b0e16a23f72caabb2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -16,17 +19,30 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            backdrop-filter: brightness(0.95);
         }
+
         input, button {
             padding: 10px;
             font-size: 16px;
             margin: 10px;
+            border-radius: 5px;
+            border: none;
         }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+        }
+
         #message {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
+            color: black; /* لون الرسالة ثابت أسود */
         }
+
         #invitationImage {
             margin-top: 20px;
             max-width: 90%;
@@ -35,6 +51,13 @@
             box-shadow: 0 0 10px #aaa;
             display: none;
             border-radius: 8px;
+        }
+
+        h1 {
+            color: #800080;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -69,31 +92,31 @@
 
             if (!phone) {
                 messageDiv.innerHTML = "❗ من فضلك ادخل رقم تليفون صحيح";
-                messageDiv.style.color = "red";
                 image.style.display = "none";
                 return;
             }
 
-            // محاولة تحميل الصورة الخاصة بالرقم
+            // التحقق من أن الرقم 11 رقم
+            if (!/^\d{11}$/.test(phone)) {
+                messageDiv.innerHTML = "❗ رقم التليفون يجب أن يكون مكون من 11 رقم";
+                image.style.display = "none";
+                return;
+            }
+
             const imgPath = `images/${phone}.png`;
             const testImg = new Image();
 
             testImg.onload = function() {
-                // الصورة موجودة
-                messageDiv.innerHTML = "🎉 مبروك! دي دعوتك الخاصة!";
-                messageDiv.style.color = "green";
+                messageDiv.innerHTML = "🎉 مبروك انت معانا !  اعمل  اسكان للحصول علي دعوتك الخاصة!";
                 image.src = imgPath;
                 image.style.display = "block";
             };
 
             testImg.onerror = function() {
-                // الصورة مش موجودة
                 messageDiv.innerHTML = "🚫 أنا معزمتكش يا صاحبي!";
-                messageDiv.style.color = "red";
                 image.style.display = "none";
             };
 
-            // جرب تحميل الصورة
             testImg.src = imgPath;
         }
     </script>
