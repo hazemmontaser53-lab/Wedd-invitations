@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دعوة الفرح</title>
     <style>
-        body {
+        html, body {
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
             direction: rtl;
             background-image: url("https://i.pinimg.com/originals/c8/9b/49/c89b49c22d3f7d3b0e16a23f72caabb2.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
+            backdrop-filter: brightness(0.95);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            backdrop-filter: brightness(0.95);
+            box-sizing: border-box;
         }
 
         input, button {
@@ -61,11 +62,10 @@
             border-radius: 10px;
         }
 
-        /* ميديا كويري لتنسيق الموبايل */
         @media (max-width: 600px) {
-            body {
+            html, body {
                 padding: 20px;
-                height: auto;
+                align-items: stretch;
             }
 
             input, button {
@@ -133,13 +133,13 @@
             const imgPath = `images/${phone}.png`;
             const testImg = new Image();
 
-            testImg.onload = function() {
+            testImg.onload = function () {
                 messageDiv.innerHTML = "🎉 مبروك انت معانا !  اعمل  اسكان للحصول علي دعوتك الخاصة!";
                 image.src = imgPath;
                 image.style.display = "block";
             };
 
-            testImg.onerror = function() {
+            testImg.onerror = function () {
                 messageDiv.innerHTML = "🚫 أنا معزمتكش يا صاحبي!";
                 image.style.display = "none";
             };
