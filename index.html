@@ -2,6 +2,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دعوة الفرح</title>
     <style>
         body {
@@ -40,7 +41,7 @@
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
-            color: black; /* لون الرسالة ثابت أسود */
+            color: black;
         }
 
         #invitationImage {
@@ -58,6 +59,33 @@
             background-color: rgba(255, 255, 255, 0.7);
             padding: 10px 20px;
             border-radius: 10px;
+        }
+
+        /* ميديا كويري لتنسيق الموبايل */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+                height: auto;
+            }
+
+            input, button {
+                width: 100%;
+                font-size: 18px;
+            }
+
+            h1 {
+                font-size: 22px;
+                padding: 10px;
+            }
+
+            #message {
+                font-size: 16px;
+            }
+
+            #invitationImage {
+                max-width: 100%;
+                max-height: 250px;
+            }
         }
     </style>
 </head>
@@ -96,7 +124,6 @@
                 return;
             }
 
-            // التحقق من أن الرقم 11 رقم
             if (!/^\d{11}$/.test(phone)) {
                 messageDiv.innerHTML = "❗ رقم التليفون يجب أن يكون مكون من 11 رقم";
                 image.style.display = "none";
